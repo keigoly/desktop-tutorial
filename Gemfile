@@ -17,6 +17,7 @@ gem 'turbolinks',              '5.0.1'
 gem 'jbuilder',                '2.7.0'
 gem "aws-sdk-s3", require: false
 gem 'counter_culture', '~> 1.8'
+gem 'ransack'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
