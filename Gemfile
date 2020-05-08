@@ -20,6 +20,8 @@ gem 'counter_culture', '~> 1.8'
 gem 'ransack'
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'bootstrap-social-rails'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

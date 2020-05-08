@@ -136,6 +136,35 @@ class User < ApplicationRecord
     end
   end
   
+  def self.from_omniauth(auth)
+        # emailの提供は必須とする
+        user = User.where('email = ?', auth.info.email).first
+      if user.blank?
+        user = User.new
+      end
+    user.uid   = auth.uid
+    user.name  = auth.info.name
+    user.email = auth.info.email
+    user.icon  = auth.info.image
+    user.oauth_token      = auth.credentials.token
+    user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+    user
+  end
+  
+  def self.find_or_create_from_auth(auth)
+    provider = auth[:provider]
+    uid = auth[:uid]
+    name = auth[:info][:name]
+    image = auth[:info][:image]
+    #必要に応じて情報追加してください
+  
+    #ユーザはSNSで登録情報を変更するかもしれので、毎回データベースの情報も更新する
+    self.find_or_create_by(provider: provider, uid: uid) do |user|
+      user.username = name
+      user.image_path = image
+    end
+  end
+    
   private
 
     # メールアドレスをすべて小文字にする

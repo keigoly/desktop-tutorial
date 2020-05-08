@@ -18,6 +18,15 @@
       <% end %>
       
       <%= f.submit "Log in", class: "btn btn-primary" %>
+      
+      <br>
+      <br>
+      
+      <p>
+        <%= link_to '/auth/facebook', class: "btn btn-social btn-facebook" do %>
+          <span class="fa fa-facebook"></span> Facebookアカウントでログイン
+        <% end %>
+      </p>
     <% end %>
 
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>
