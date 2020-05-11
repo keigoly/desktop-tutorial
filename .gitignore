@@ -8,12 +8,12 @@ public/uploads/
 /db/fixtures/
 
 *.coffee
-/heroku/*
-/vendor/*
-/bin/
-/lib/
-/log/
-/strage/
-/tmp/
+heroku/*
+vendor/*
+bin/
+lib/
+log/
+strage/
+tmp/
 
 config/.env
