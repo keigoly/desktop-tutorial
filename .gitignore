@@ -17,22 +17,15 @@
 !/log/.keep
 !/tmp/.keep
 
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+
 /node_modules
 /yarn-error.log
 
+/public/assets
 .byebug_history
 
-# アップロードされたテスト画像を無視する
-/public/uploads
-
-# 他無視するフォルダ
-/vendor/*
-/heroku/*
-/bin/
-/lib/
-/log/
-/strage/
-/tmp/
-config/.env
-
-# 無視する拡張子
+# Ignore master key for decrypting credentials and more.
+/config/master.key
