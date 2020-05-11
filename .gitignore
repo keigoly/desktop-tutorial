@@ -26,10 +26,11 @@
 /public/uploads
 
 # 他無視するフォルダ
-/vendor
-
+/vendor/*
+/heroku/*
 /bin/
 /lib/
 /log/
 /strage/
 /tmp/
+config/.env
