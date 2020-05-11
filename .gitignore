@@ -14,16 +14,16 @@
 # Ignore all logfiles and tempfiles.
 #/log/*
 #/tmp/*
-!/log/.keep
-!/tmp/.keep
+#!/log/.keep
+#!/tmp/.keep
 
-/node_modules
-/yarn-error.log
+#/node_modules
+#/yarn-error.log
 
-.byebug_history
+#.byebug_history
 
 # アップロードされたテスト画像を無視する
-/public/uploads
+#/public/uploads
 
 # vendor無視
 /vendor
