@@ -25,5 +25,11 @@
 # アップロードされたテスト画像を無視する
 /public/uploads
 
-# vendor無視
-vendor/
+# 他無視するフォルダ
+/vendor
+
+/bin/
+/lib/
+/log/
+/strage/
+/tmp/
