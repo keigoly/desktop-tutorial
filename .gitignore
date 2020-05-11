@@ -24,3 +24,6 @@
 
 # アップロードされたテスト画像を無視する
 /public/uploads
+
+# vendor無視
+/vendor
