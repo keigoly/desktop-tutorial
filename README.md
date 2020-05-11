@@ -1,24 +1,5 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+自分が苦労した点→全てです。コントローラーからモデルの構築、ルートの構築に至るまで全てです。
+　
+学んだ点→色々とコードを書いたり消したりしていくと、何となくわかるようになってきたのが、今回一番学んだ点です
+　
+・自慢したい・相談したい点→自慢したい点はありません。相談したい点は山ほどありますが、ここら辺に関しては課題でつまずいた際に、再度相談に乗らせていただきますので、よろしくお願いします
