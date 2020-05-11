@@ -34,3 +34,6 @@
 /strage/
 /tmp/
 config/.env
+
+# 無視する拡張子
+*.cache
