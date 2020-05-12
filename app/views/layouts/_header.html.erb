@@ -7,6 +7,7 @@
         <li><%= link_to "Help", help_path %></li>
         <% if logged_in? %>
           <li><%= link_to "Users", users_path %></li>
+          <li><%= link_to "Notifications", notifications_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>
@@ -20,6 +21,16 @@
               </li>
             </ul>
           </li>
+          <div class="nav">
+            <%= form_tag(users_path, :method => 'get' ) do %>
+            <li class="input-group">
+              <%= text_field_tag :search, params[:search], placeholder: "ユーザー検索", class: "form-control" %>
+                <span class="input-group-btn">
+                    <%= button_tag "検索", :name => nil, class: "btn btn-primary" %>
+                </span>
+            </li>
+            <% end %>
+          </div>
         <% else %>
           <li><%= link_to "Log in", login_path %></li>
         <% end %>
