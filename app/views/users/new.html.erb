@@ -19,6 +19,15 @@
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
+      
+      <br>
+      <br>
+      
+      <p>
+        <%= link_to '/auth/facebook', class: "btn btn-social btn-facebook" do %>
+          <span class="fa fa-facebook"></span> Facebookアカウントでサインイン
+        <% end %>
+      </p>
     <% end %>
   </div>
 </div>

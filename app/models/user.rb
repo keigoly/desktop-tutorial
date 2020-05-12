@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :microposts, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -8,6 +9,8 @@ class User < ApplicationRecord
                                    dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
@@ -125,6 +128,43 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
   
+  def self.search(search) #ここでのself.はUser.を意味する
+    if search
+      where(['name LIKE ?', "%#{search}%"]) #検索とnameの部分一致を表示。User.は省略
+    else
+      all #全て表示。User.は省略
+    end
+  end
+  
+  def self.from_omniauth(auth)
+        # emailの提供は必須とする
+        user = User.where('email = ?', auth.info.email).first
+      if user.blank?
+        user = User.new
+      end
+    user.uid   = auth.uid
+    user.name  = auth.info.name
+    user.email = auth.info.email
+    user.icon  = auth.info.image
+    user.oauth_token      = auth.credentials.token
+    user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+    user
+  end
+  
+  def self.find_or_create_from_auth(auth)
+    provider = auth[:provider]
+    uid = auth[:uid]
+    name = auth[:info][:name]
+    image = auth[:info][:image]
+    #必要に応じて情報追加してください
+  
+    #ユーザはSNSで登録情報を変更するかもしれので、毎回データベースの情報も更新する
+    self.find_or_create_by(provider: provider, uid: uid) do |user|
+      user.username = name
+      user.image_path = image
+    end
+  end
+    
   private
 
     # メールアドレスをすべて小文字にする
